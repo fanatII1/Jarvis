@@ -9,7 +9,7 @@ app.use(cors());
 
 const PORT = process.env.PORT || 3001;
 const { Configuration, OpenAIApi } = require("openai");
-const configuration = new Configuration({ apiKey: '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'});
+const configuration = new Configuration({ apiKey: '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'});
 const openai = new OpenAIApi(configuration);
 
 const AWS = require("aws-sdk");
