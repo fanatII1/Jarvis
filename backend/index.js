@@ -3,18 +3,19 @@ const app = express();
 const cors = require("cors");
 const bodyParser = require("body-parser");
 const fs = require("fs");
+const dotenv = require("dotenv")
+
+dotenv.config()
+const PORT = process.env.PORT || 3001;
+const { Configuration, OpenAIApi } = require("openai");
+const configuration = new Configuration({ apiKey: process.env.OPEN_AI_KEY});
+const openai = new OpenAIApi(configuration);
 
 app.use(bodyParser.json());
 app.use(cors());
 
-const PORT = process.env.PORT || 3001;
-const { Configuration, OpenAIApi } = require("openai");
-const configuration = new Configuration({ apiKey: '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'});
-const openai = new OpenAIApi(configuration);
-
 const AWS = require("aws-sdk");
 AWS.config.loadFromPath("AWS_Credentials.json");
-console.log(process.env.OPEN_AI_KEY)
 
 app.post('/api/TTS', async (req, res) => {
 
