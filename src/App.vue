@@ -28,8 +28,8 @@ const runSpeechRecognition = () => {
     output.value = transcript;
 
     try {
-      // const baseURL = import.meta.env.VITE_BASE_SERVER_URL || 'http://localhost:3001'
-      const response = await fetch(`/api/TTS`, {
+      const baseURL = import.meta.env.VITE_BASE_SERVER_URL || 'http://localhost:3001'
+      const response = await fetch(`${baseURL}/api/TTS`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
