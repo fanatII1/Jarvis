@@ -9,7 +9,7 @@ In simple terms, you are able to ask chatGPT any question simply by making a rec
 ## Technologies used:
 1. **Vue**
 2. **NodeJS + Express**
-3. **AWS Polly**
+3. **AWS Polly** (for voice)
 
 ## Installation & Setup
 1. git clone https://github.com/fanatII1/Music-Player.git
