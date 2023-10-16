@@ -5,6 +5,7 @@ This is a ChatGPT voiced AI application, that is focused on adding a small featu
 In simple terms, you are able to ask chatGPT any question simply by making a recording.
 
 ![JARVICS_AI](https://github.com/fanatII1/Jarvis/blob/main/public/DocumentationImages/Doc1.png)
+[![JARVIS_AI](https://github.com/fanatII1/Jarvis/blob/main/public/DocumentationImages/Doc1.png)](https://github.com/fanatII1/Jarvis)
 
 ## Technologies used:
 1. **Vue**
