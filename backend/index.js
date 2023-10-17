@@ -13,6 +13,7 @@ const openai = new OpenAIApi(configuration);
 
 app.use(bodyParser.json());
 app.use(cors());
+app.use(express.static('public'));
 
 const AWS = require("aws-sdk");
 AWS.config.loadFromPath("AWS_Credentials.json");
@@ -49,6 +50,11 @@ app.post('/api/TTS', async (req, res) => {
     })
 
     setTimeout(() => { res.status(200).json(num) }, 4500)
+})
+
+app.use(express.static('../'))
+app.get('*', (req,res)=>{
+  res.sendFile(path.resolve(__dirname, '../', 'build', 'index.html'))
 })
 
 app.listen(PORT, () => { 
