@@ -52,10 +52,6 @@ app.post('/api/TTS', async (req, res) => {
     setTimeout(() => { res.status(200).json(num) }, 4500)
 })
 
-app.use(express.static('../'))
-app.get('*', (req,res)=>{
-  res.sendFile(path.resolve(__dirname, '../', 'build', 'index.html'))
-})
 
 app.listen(PORT, () => { 
     console.log(`Listening at ${PORT}`); 
