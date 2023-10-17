@@ -6,6 +6,7 @@ const fs = require("fs");
 const dotenv = require("dotenv")
 const path = require('path')
 
+
 dotenv.config()
 const PORT = process.env.PORT || 3001;
 const { Configuration, OpenAIApi } = require("openai");
@@ -14,6 +15,7 @@ const openai = new OpenAIApi(configuration);
 
 app.use(bodyParser.json());
 app.use(cors());
+app.use(express.static(path.join(__dirname, 'audio')));
 
 const AWS = require("aws-sdk");
 AWS.config.loadFromPath("AWS_Credentials.json");
