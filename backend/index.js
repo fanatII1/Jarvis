@@ -17,6 +17,7 @@ app.use(bodyParser.json());
 app.use(cors());
 app.use(express.static('public'));
 app.use(express.static('public/voice'));
+app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.static(path.join(__dirname, 'public', 'voice')))
 
 const AWS = require("aws-sdk");
