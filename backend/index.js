@@ -4,8 +4,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const fs = require("fs");
 const dotenv = require("dotenv")
-const path = require('path');
-
+const path = require('path')
 
 dotenv.config()
 const PORT = process.env.PORT || 3001;
@@ -15,10 +14,6 @@ const openai = new OpenAIApi(configuration);
 
 app.use(bodyParser.json());
 app.use(cors());
-app.use(express.static('public'));
-app.use(express.static('public/voice'));
-app.use(express.static(path.join(__dirname, 'public')))
-app.use(express.static(path.join(__dirname, 'public', 'voice')))
 
 const AWS = require("aws-sdk");
 AWS.config.loadFromPath("AWS_Credentials.json");
@@ -48,15 +43,24 @@ app.post('/api/TTS', async (req, res) => {
             return;
         }
 
-        let filePath = "../public/voice/";
+        //create file path and file name
+        //the audio is storde in public folder of frontend
+        //then the fileName is sent to the frontend
+        //in the frontend, once the file is stored in there, when mySource changes, it'll play the audio
         let fileName = num + ".mp3";
-
-        if (num) fs.writeFileSync(filePath + fileName, data.AudioStream)
+        let filePath = path.join(__dirname, 'audio', fileName);
+        
+        if (num) {
+            fs.writeFileSync(filePath, data.AudioStream, (err) => {
+                if (err) {
+                    console.error(err);
+                    return res.status(500).json({ error: "Failed to write audio file" });
+                }
+            });
+            res.status(200).json(num);
+        }
     })
-
-    setTimeout(() => { res.status(200).json(num) }, 4500)
 })
-
 
 app.listen(PORT, () => { 
     console.log(`Listening at ${PORT}`); 
