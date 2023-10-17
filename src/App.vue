@@ -44,6 +44,7 @@ const runSpeechRecognition = () => {
         console.log(data)
         if (data) {
           mySource.value = `${import.meta.env.BASE_URL}voice/${data}.mp3`;
+          console.log(mySource.value)
           setTimeout(() => {
             player.value.play();
           }, 500);
