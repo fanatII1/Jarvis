@@ -44,7 +44,6 @@ const runSpeechRecognition = () => {
         console.log(data);
         if (data) {
             mySource.value = `${import.meta.env.VITE_BASE_URL}/audio/${data}.mp3`;
-            console.log(mySource.value)
             player.value.oncanplaythrough = () => {
                 player.value.play();
             };

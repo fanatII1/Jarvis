@@ -15,15 +15,7 @@ const openai = new OpenAIApi(configuration);
 
 app.use(bodyParser.json());
 app.use(cors());
-app.use('/backend/audio', express.static(path.join(__dirname, 'audio')));
-
-app.get('/backend/audio/:filename', (req, res) => {
-  const filename = req.params.filename;
-  const filePath = path.join(__dirname, 'audio', filename);
-  console.log(`Requested audio file: ${filename}`);
-  console.log(`File path: ${filePath}`);
-  // ... rest of your code for serving audio
-});
+app.use(express.static(path.join(__dirname, 'audio')));
 
 const AWS = require("aws-sdk");
 AWS.config.loadFromPath("AWS_Credentials.json");
@@ -36,7 +28,7 @@ app.post('/api/TTS', async (req, res) => {
         max_tokens: 100,
         temperature: 0.5
     })
-    console.log(completion)
+    // console.log(completion)
 
     let num = (Math.random() * 100000000).toFixed(0);
 
