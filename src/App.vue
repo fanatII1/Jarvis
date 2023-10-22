@@ -66,7 +66,11 @@ const runSpeechRecognition = () => {
   </div>
 
   <div class="audio-wrapper">
-    <audio id="player" ref="player" :src="mySource" type="audio/mp3" controls hidden></audio>
+    <audio id="player" ref="player" :src="mySource" type="audio/mp3" controls hidden >
+        <source :src="mySource" type="audio/mp3" />
+        <source :src="mySource" type="audio/mpeg">
+        This audio is not supported in your browser
+    </audio>
     <canvas ref="canvas" />
     <div class="button-section">
     <button type="button" @click="runSpeechRecognition()">Ask Me Anything</button>
